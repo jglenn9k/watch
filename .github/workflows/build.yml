@@ -1,6 +1,7 @@
 name: Android build
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -32,4 +33,3 @@ jobs:
           path: |
             watchface/build/outputs/apk/debug/watchface-debug.apk
             sensor-provider/build/outputs/apk/demo/debug/sensor-provider-demo-debug.apk
-
