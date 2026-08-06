@@ -27,7 +27,7 @@ unnecessarily requiring Wear OS 6.
 
 ## Requirements
 
-- Android Studio with Android 16 / API 36 SDK and JDK 17
+- Android Studio with Android 16 / API 36 SDK and OpenJDK 25.0.4 (2026-07-21 LTS)
 - Galaxy Watch5 Pro SM-R920 (physical hardware is required for Samsung SpO2)
 - Watch and workstation on the same Wi-Fi network for wireless ADB
 - Samsung Health Sensor SDK 1.4.1 and current Health Platform for real SpO2
