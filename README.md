@@ -68,7 +68,10 @@ scripts/setup-play-signing.sh
 ```
 
 This creates the private upload key and public upload certificate under
-`~/.config/aviator-watch/`. Back up the `.jks` file and its password separately.
+`~/.config/aviator-watch/`, then adds the four `ANDROID_*` signing environment
+variables to `~/.bash_profile` with owner-only permissions. Back up the `.jks`
+file and its password separately. The profile contains the passwords in plaintext,
+so never publish or copy it into the repository.
 After installing the Samsung AAR, produce signed local Play artifacts with a new,
 monotonically increasing version code:
 
