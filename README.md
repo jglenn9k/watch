@@ -47,14 +47,45 @@ samsungDebug    Uses the real Samsung Health Sensor SDK.
 
 To enable real SpO2:
 
-1. Download the Samsung Health Sensor SDK from Samsung Developer.
-2. Copy `samsung-health-sensor-api.aar` to `sensor-provider/libs/`.
+1. Sign in to Samsung Developer and download Samsung Health Sensor SDK v1.4.1.
+2. Extract the download and copy its `samsung-health-sensor-api.aar` to
+   `sensor-provider/libs/samsung-health-sensor-api.aar`.
 3. Build `:sensor-provider:assembleSamsungDebug` and
    `:watchface:assembleDebug`.
 
 For Play-ready bundles, configure release signing in your private Gradle settings,
 then build `:sensor-provider:bundleSamsungRelease` and
 `:watchface:bundleRelease`. They are separate Play artifacts and listings.
+
+## Google Play signing
+
+Use Google Play App Signing and let Google generate the app-signing key for each
+new Play listing. Keep one local upload key for signing both AAB uploads. Create it
+interactively; passwords are never written into this repository:
+
+```bash
+scripts/setup-play-signing.sh
+```
+
+This creates the private upload key and public upload certificate under
+`~/.config/aviator-watch/`. Back up the `.jks` file and its password separately.
+After installing the Samsung AAR, produce signed local Play artifacts with a new,
+monotonically increasing version code:
+
+```bash
+scripts/build-play-release.sh 1.0.0 1
+```
+
+Create two Play Console apps, one for `com.jglenn.aviator.watchface` and one for
+`com.jglenn.aviator.sensors`, and upload the corresponding AAB to an internal-test
+release. Accept Play App Signing with Google's generated key for each app.
+
+For the sensor provider, copy the **App signing key certificate SHA-256** from its
+Play Console App integrity page and submit that fingerprint, package name
+`com.jglenn.aviator.sensors`, and the SpO2 use case in Samsung's partnership
+request. Do not submit the upload-key fingerprint: Google re-signs delivered APKs
+with the app-signing key. Until Samsung approves the production signature, use
+Health Platform Developer Mode only for local testing.
 
 ## Install on the SM-R920
 
