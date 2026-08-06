@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WatchFace width="450" height="450">
+    <Metadata key="CLOCK_TYPE" value="DIGITAL" />
+    <Metadata key="PREVIEW_TIME" value="10:24:36" />
+
+    <UserConfigurations>
+        <ColorConfiguration id="accent" defaultValue="cyan" displayName="accent_label" screenReaderText="accent_label">
+            <ColorOption id="cyan" displayName="cyan_label" colors="#FF00E5FF #FF88F4FF" />
+            <ColorOption id="green" displayName="green_label" colors="#FF00E676 #FF8DFFB9" />
+            <ColorOption id="amber" displayName="amber_label" colors="#FFFFAB00 #FFFFD180" />
+        </ColorConfiguration>
+    </UserConfigurations>
+
+    <Scene backgroundColor="#FF000000">
+        <Group name="interactive_frame" x="0" y="0" width="450" height="450">
+            <Variant mode="AMBIENT" target="alpha" value="0" />
+            <PartDraw x="47" y="46" width="356" height="210">
+                <RoundRectangle x="0" y="0" width="356" height="210" cornerRadiusX="18" cornerRadiusY="18">
+                    <Stroke color="[CONFIGURATION.accent]" thickness="3" />
+                </RoundRectangle>
+                <Line startX="0" startY="56" endX="356" endY="56">
+                    <Stroke color="#FF20525A" thickness="2" />
+                </Line>
+                <Line startX="0" startY="174" endX="356" endY="174">
+                    <Stroke color="#FF20525A" thickness="2" />
+                </Line>
+            </PartDraw>
+            <PartDraw x="55" y="274" width="340" height="154">
+                <RoundRectangle x="0" y="0" width="340" height="154" cornerRadiusX="16" cornerRadiusY="16">
+                    <Stroke color="#FF20525A" thickness="2" />
+                </RoundRectangle>
+                <Line startX="170" startY="0" endX="170" endY="154"><Stroke color="#FF20525A" thickness="2" /></Line>
+                <Line startX="0" startY="77" endX="340" endY="77"><Stroke color="#FF20525A" thickness="2" /></Line>
+            </PartDraw>
+        </Group>
+
+        <Group name="utc" x="85" y="55" width="280" height="42">
+            <PartText x="0" y="0" width="72" height="42" tintColor="[CONFIGURATION.accent]">
+                <Text><Font family="SYNC_TO_DEVICE" size="23" weight="BOLD">UTC</Font></Text>
+            </PartText>
+            <DigitalClock x="68" y="0" width="170" height="42">
+                <Localization timeZone="UTC" />
+                <TimeText x="0" y="0" width="170" height="42" format="hh:mm" hourFormat="24">
+                    <Font family="SYNC_TO_DEVICE" size="30" weight="BOLD" color="[CONFIGURATION.accent.1]" />
+                </TimeText>
+            </DigitalClock>
+            <PartText x="238" y="0" width="42" height="42" tintColor="[CONFIGURATION.accent.1]">
+                <Text><Font family="SYNC_TO_DEVICE" size="23" weight="BOLD">Z</Font></Text>
+            </PartText>
+        </Group>
+
+        <DigitalClock x="65" y="110" width="320" height="105">
+            <TimeText x="0" y="0" width="320" height="105" format="hh:mm">
+                <Font family="SYNC_TO_DEVICE" size="86" weight="BOLD" color="#FFFFFFFF" />
+            </TimeText>
+        </DigitalClock>
+        <Group name="seconds" x="350" y="174" width="48" height="36">
+            <Variant mode="AMBIENT" target="alpha" value="0" />
+            <DigitalClock x="0" y="0" width="48" height="36">
+                <TimeText x="0" y="0" width="48" height="36" format="ss">
+                    <Font family="SYNC_TO_DEVICE" size="23" weight="BOLD" color="[CONFIGURATION.accent]" />
+                </TimeText>
+            </DigitalClock>
+        </Group>
+        <PartText x="80" y="220" width="290" height="30" tintColor="#FFB0BEC5">
+            <Text>
+                <Font family="SYNC_TO_DEVICE" size="20" weight="BOLD">
+                    <Template><![CDATA[%s  %s %02d]]>
+                        <Parameter expression="[DAY_OF_WEEK_S]" />
+                        <Parameter expression="[MONTH_S]" />
+                        <Parameter expression="[DAY]" />
+                    </Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <ComplicationSlot x="55" y="274" width="170" height="77" slotId="100" displayName="heading_slot" supportedTypes="SHORT_TEXT EMPTY">
+            <BoundingRoundBox x="0" y="0" width="170" height="77" cornerRadius="16" outlinePadding="2" />
+            <DefaultProviderPolicy primaryProvider="com.jglenn.aviator.sensors/com.jglenn.aviator.sensors.complications.HeadingComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
+            <Complication type="SHORT_TEXT"><PartText x="10" y="5" width="150" height="67" tintColor="[CONFIGURATION.accent.1]"><Text ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="25" weight="BOLD"><Template><![CDATA[%s
+%s]]><Parameter expression="[COMPLICATION.TITLE]" /><Parameter expression="[COMPLICATION.TEXT]" /></Template></Font></Text></PartText></Complication>
+            <Complication type="EMPTY"><PartText x="10" y="5" width="150" height="67" tintColor="#FFFFAB00"><Text><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD"><![CDATA[HDG
+---]]></Font></Text></PartText></Complication>
+        </ComplicationSlot>
+
+        <ComplicationSlot x="225" y="274" width="170" height="77" slotId="101" displayName="pressure_slot" supportedTypes="SHORT_TEXT EMPTY">
+            <BoundingRoundBox x="0" y="0" width="170" height="77" cornerRadius="16" outlinePadding="2" />
+            <DefaultProviderPolicy primaryProvider="com.jglenn.aviator.sensors/com.jglenn.aviator.sensors.complications.PressureComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
+            <Complication type="SHORT_TEXT"><PartText x="10" y="5" width="150" height="67" tintColor="[CONFIGURATION.accent.1]"><Text ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="23" weight="BOLD"><Template><![CDATA[%s
+%s]]><Parameter expression="[COMPLICATION.TITLE]" /><Parameter expression="[COMPLICATION.TEXT]" /></Template></Font></Text></PartText></Complication>
+            <Complication type="EMPTY"><PartText x="10" y="5" width="150" height="67" tintColor="#FFFFAB00"><Text><Font family="SYNC_TO_DEVICE" size="22" weight="BOLD"><![CDATA[BARO
+--.-- inHg]]></Font></Text></PartText></Complication>
+        </ComplicationSlot>
+
+        <ComplicationSlot x="55" y="351" width="170" height="77" slotId="102" displayName="spo2_slot" supportedTypes="SHORT_TEXT EMPTY">
+            <BoundingRoundBox x="0" y="0" width="170" height="77" cornerRadius="16" outlinePadding="2" />
+            <DefaultProviderPolicy primaryProvider="com.jglenn.aviator.sensors/com.jglenn.aviator.sensors.complications.Spo2ComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
+            <Complication type="SHORT_TEXT"><PartText x="10" y="5" width="150" height="67" tintColor="[CONFIGURATION.accent.1]"><Text ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD"><Template><![CDATA[%s
+%s]]><Parameter expression="[COMPLICATION.TITLE]" /><Parameter expression="[COMPLICATION.TEXT]" /></Template></Font></Text></PartText></Complication>
+            <Complication type="EMPTY"><PartText x="10" y="5" width="150" height="67" tintColor="#FFFFAB00"><Text><Font family="SYNC_TO_DEVICE" size="23" weight="BOLD"><![CDATA[SpO₂
+--%]]></Font></Text></PartText></Complication>
+        </ComplicationSlot>
+
+        <ComplicationSlot x="225" y="351" width="170" height="77" slotId="103" displayName="weather_slot" supportedTypes="SHORT_TEXT SMALL_IMAGE EMPTY">
+            <BoundingRoundBox x="0" y="0" width="170" height="77" cornerRadius="16" outlinePadding="2" />
+            <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
+            <Complication type="SHORT_TEXT"><PartText x="10" y="5" width="150" height="67" tintColor="[CONFIGURATION.accent.1]"><Text ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="23" weight="BOLD"><Template><![CDATA[%s
+%s]]><Parameter expression="[COMPLICATION.TITLE]" /><Parameter expression="[COMPLICATION.TEXT]" /></Template></Font></Text></PartText></Complication>
+            <Complication type="SMALL_IMAGE"><PartImage x="53" y="7" width="64" height="64"><Image resource="[COMPLICATION.SMALL_IMAGE]" /></PartImage></Complication>
+            <Complication type="EMPTY"><PartText x="10" y="5" width="150" height="67" tintColor="#FFFFAB00"><Text><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD"><![CDATA[WX
+--]]></Font></Text></PartText></Complication>
+        </ComplicationSlot>
+    </Scene>
+</WatchFace>
