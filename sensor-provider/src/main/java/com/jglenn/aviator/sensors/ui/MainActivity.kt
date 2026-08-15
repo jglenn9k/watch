@@ -1,4 +1,4 @@
-package com.jglenn.aviator.sensors.ui
+package com.jglenn9k.aviator.sensors.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -10,11 +10,11 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
-import com.jglenn.aviator.sensors.complications.PressureComplicationService
-import com.jglenn.aviator.sensors.complications.requestUpdate
-import com.jglenn.aviator.sensors.data.AviationFormatter
-import com.jglenn.aviator.sensors.data.ReadingStore
-import com.jglenn.aviator.sensors.sensors.PressureSampler
+import com.jglenn9k.aviator.sensors.complications.PressureComplicationService
+import com.jglenn9k.aviator.sensors.complications.requestUpdate
+import com.jglenn9k.aviator.sensors.data.AviationFormatter
+import com.jglenn9k.aviator.sensors.data.ReadingStore
+import com.jglenn9k.aviator.sensors.sensors.PressureSampler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

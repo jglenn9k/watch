@@ -70,14 +70,14 @@
 
         <ComplicationSlot x="38" y="248" width="180" height="70" slotId="100" displayName="heading_slot" supportedTypes="SHORT_TEXT EMPTY">
             <BoundingRoundBox x="0" y="0" width="180" height="70" cornerRadius="20" outlinePadding="2" />
-            <DefaultProviderPolicy primaryProvider="com.jglenn.aviator.sensors/com.jglenn.aviator.sensors.complications.HeadingComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
+            <DefaultProviderPolicy primaryProvider="com.jglenn9k.aviator.sensors/com.jglenn9k.aviator.sensors.complications.HeadingComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
             <Complication type="SHORT_TEXT"><PartText x="12" y="5" width="156" height="25" tintColor="[CONFIGURATION.accent]"><Text><Font family="SYNC_TO_DEVICE" size="18" weight="BOLD">HDG</Font></Text></PartText><PartText x="12" y="29" width="156" height="34" tintColor="[CONFIGURATION.accent.1]"><Text ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD"><Template>%s<Parameter expression="[COMPLICATION.TEXT]" /></Template></Font></Text></PartText></Complication>
             <Complication type="EMPTY"><PartText x="12" y="5" width="156" height="25" tintColor="#FFFFAB00"><Text><Font family="SYNC_TO_DEVICE" size="18" weight="BOLD">HDG</Font></Text></PartText><PartText x="12" y="29" width="156" height="34" tintColor="#FFFFAB00"><Text><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD">---</Font></Text></PartText></Complication>
         </ComplicationSlot>
 
         <ComplicationSlot x="232" y="248" width="180" height="70" slotId="101" displayName="pressure_slot" supportedTypes="SHORT_TEXT EMPTY">
             <BoundingRoundBox x="0" y="0" width="180" height="70" cornerRadius="20" outlinePadding="2" />
-            <DefaultProviderPolicy primaryProvider="com.jglenn.aviator.sensors/com.jglenn.aviator.sensors.complications.PressureComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
+            <DefaultProviderPolicy primaryProvider="com.jglenn9k.aviator.sensors/com.jglenn9k.aviator.sensors.complications.PressureComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
             <Complication type="SHORT_TEXT"><PartText x="12" y="5" width="156" height="25" tintColor="[CONFIGURATION.accent]"><Text><Font family="SYNC_TO_DEVICE" size="18" weight="BOLD">BARO</Font></Text></PartText><PartText x="12" y="29" width="156" height="34" tintColor="[CONFIGURATION.accent.1]"><Text ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="20" weight="BOLD"><Template>%s<Parameter expression="[COMPLICATION.TEXT]" /></Template></Font></Text></PartText></Complication>
             <Complication type="EMPTY"><PartText x="12" y="5" width="156" height="25" tintColor="#FFFFAB00"><Text><Font family="SYNC_TO_DEVICE" size="18" weight="BOLD">BARO</Font></Text></PartText><PartText x="12" y="29" width="156" height="34" tintColor="#FFFFAB00"><Text><Font family="SYNC_TO_DEVICE" size="20" weight="BOLD">--.-- inHg</Font></Text></PartText></Complication>
         </ComplicationSlot>

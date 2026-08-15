@@ -1,4 +1,4 @@
-package com.jglenn.aviator.sensors.complications
+package com.jglenn9k.aviator.sensors.complications
 
 import android.app.Activity
 import android.app.PendingIntent
@@ -42,4 +42,3 @@ private fun plainText(value: String): ComplicationText = PlainComplicationText.B
 fun requestUpdate(context: Context, service: Class<*>) {
     ComplicationDataSourceUpdateRequester.create(context, ComponentName(context, service)).requestUpdateAll()
 }
-

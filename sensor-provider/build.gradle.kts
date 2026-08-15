@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.jglenn.aviator.sensors"
+    namespace = "com.jglenn9k.aviator.sensors"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.jglenn.aviator.sensors"
+        applicationId = "com.jglenn9k.aviator.sensors"
         minSdk = 30
         targetSdk = 36
         versionCode = providers.environmentVariable("RELEASE_VERSION_CODE").orNull?.toIntOrNull() ?: 1

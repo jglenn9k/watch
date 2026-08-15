@@ -1,4 +1,4 @@
-package com.jglenn.aviator.sensors.ui
+package com.jglenn9k.aviator.sensors.ui
 
 import android.app.Activity
 import android.hardware.Sensor
@@ -8,10 +8,10 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.WindowManager
-import com.jglenn.aviator.sensors.complications.HeadingComplicationService
-import com.jglenn.aviator.sensors.complications.requestUpdate
-import com.jglenn.aviator.sensors.data.AviationFormatter
-import com.jglenn.aviator.sensors.data.ReadingStore
+import com.jglenn9k.aviator.sensors.complications.HeadingComplicationService
+import com.jglenn9k.aviator.sensors.complications.requestUpdate
+import com.jglenn9k.aviator.sensors.data.AviationFormatter
+import com.jglenn9k.aviator.sensors.data.ReadingStore
 import kotlin.math.PI
 
 class CompassActivity : Activity(), SensorEventListener {

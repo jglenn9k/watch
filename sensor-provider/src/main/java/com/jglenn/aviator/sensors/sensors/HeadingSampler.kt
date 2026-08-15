@@ -1,4 +1,4 @@
-package com.jglenn.aviator.sensors.sensors
+package com.jglenn9k.aviator.sensors.sensors
 
 import android.content.Context
 import android.hardware.Sensor

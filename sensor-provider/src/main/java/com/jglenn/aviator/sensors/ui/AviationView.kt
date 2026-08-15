@@ -1,4 +1,4 @@
-package com.jglenn.aviator.sensors.ui
+package com.jglenn9k.aviator.sensors.ui
 
 import android.content.Context
 import android.graphics.Canvas
@@ -27,4 +27,3 @@ open class AviationView(context: Context) : View(context) {
         canvas.drawRoundRect(bounds, 18f, 18f, paint)
     }
 }
-

@@ -1,4 +1,4 @@
-package com.jglenn.aviator.sensors.data
+package com.jglenn9k.aviator.sensors.data
 
 import java.util.Locale
 import kotlin.math.roundToInt

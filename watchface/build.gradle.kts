@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.jglenn.aviator.watchface"
+    namespace = "com.jglenn9k.aviator.watchface"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.jglenn.aviator.watchface"
+        applicationId = "com.jglenn9k.aviator.watchface"
         minSdk = 33
         targetSdk = 36
         versionCode = providers.environmentVariable("RELEASE_VERSION_CODE").orNull?.toIntOrNull() ?: 1

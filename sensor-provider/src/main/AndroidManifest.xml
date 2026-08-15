@@ -30,7 +30,7 @@
             <intent-filter><action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" /></intent-filter>
             <meta-data android:name="android.support.wearable.complications.SUPPORTED_TYPES" android:value="SHORT_TEXT" />
             <meta-data android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS" android:value="300" />
-            <meta-data android:name="androidx.watchface.complications.datasource.SAFE_WATCH_FACES" android:value="com.jglenn.aviator.watchface" />
+            <meta-data android:name="androidx.watchface.complications.datasource.SAFE_WATCH_FACES" android:value="com.jglenn9k.aviator.watchface" />
         </service>
         <service
             android:name=".complications.PressureComplicationService"
@@ -41,7 +41,7 @@
             <intent-filter><action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" /></intent-filter>
             <meta-data android:name="android.support.wearable.complications.SUPPORTED_TYPES" android:value="SHORT_TEXT" />
             <meta-data android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS" android:value="1800" />
-            <meta-data android:name="androidx.watchface.complications.datasource.SAFE_WATCH_FACES" android:value="com.jglenn.aviator.watchface" />
+            <meta-data android:name="androidx.watchface.complications.datasource.SAFE_WATCH_FACES" android:value="com.jglenn9k.aviator.watchface" />
         </service>
     </application>
 </manifest>

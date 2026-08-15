@@ -1,5 +1,14 @@
 # Aviator Digital for Galaxy Watch5 Pro
 
+![Aviator Digital — aviation watch face for Wear OS](images/play-store/aviator-digital/feature-graphic-1024x500.png)
+
+[![Android build](https://github.com/jglenn9k/watch/actions/workflows/build.yml/badge.svg)](https://github.com/jglenn9k/watch/actions/workflows/build.yml)
+[![Latest release](https://img.shields.io/github/v/release/jglenn9k/watch?display_name=tag&sort=semver&color=00bcd4)](https://github.com/jglenn9k/watch/releases/latest)
+[![Wear OS](https://img.shields.io/badge/Wear%20OS-4%2B-00bcd4?logo=wearos&logoColor=white)](https://wearos.google.com/)
+[![Watch Face Format](https://img.shields.io/badge/Watch%20Face%20Format-v1-00bcd4)](https://developer.android.com/training/wearables/wff)
+[![Tested on SM--R920](https://img.shields.io/badge/device--tested-SM--R920-ffab00)](#install-on-the-sm-r920)
+[![License: GPL v3](https://img.shields.io/badge/license-GPLv3-white)](LICENSE)
+
 A high-contrast Wear OS watch face for general-aviation pilots. Local time is
 primary, UTC is always shown in 24-hour format, and the four lower panels show
 magnetic heading, raw ambient pressure, blood oxygen, and weather.
@@ -9,10 +18,14 @@ magnetic heading, raw ambient pressure, blood oxygen, and weather.
 > and wellness information only and must not be used for diagnosis, treatment, or
 > flight-safety decisions.
 
+> **Experimental software warning:** This code is provided without warranty. It
+> may contain bugs, drain your battery, catch on fire, or steal your pants. Keep
+> backups, use good judgment, and never depend on it for flight safety.
+
 ## Project layout
 
-- `watchface`: code-free Watch Face Format app (`com.jglenn.aviator.watchface`).
-- `sensor-provider`: Wear OS app (`com.jglenn.aviator.sensors`) with heading and
+- `watchface`: code-free Watch Face Format app (`com.jglenn9k.aviator.watchface`).
+- `sensor-provider`: Wear OS app (`com.jglenn9k.aviator.sensors`) with heading and
   pressure complication data sources.
 
 Wear OS requires these to be separate application bundles. The face defaults its
@@ -24,6 +37,20 @@ The face deliberately declares WFF version 1 (Wear OS 4 / API 33) because every
 feature used here is available in that schema and it preserves compatibility with
 the Watch5 Pro. This is the current declarative WFF packaging model, without
 unnecessarily requiring Wear OS 6.
+
+## Screenshots
+
+### Watch face
+
+| Cyan | Green | Amber |
+| --- | --- | --- |
+| ![Aviator Digital watch face with cyan accent](images/Screenshot_20260815_171647_One%20UI%20Watch%20Home.png) | ![Aviator Digital watch face with green accent](images/Screenshot_20260815_171750_One%20UI%20Watch%20Home.png) | ![Aviator Digital watch face with amber accent](images/Screenshot_20260815_171823_One%20UI%20Watch%20Home.png) |
+
+### Sensor companion
+
+| Magnetic compass | Ambient barometer |
+| --- | --- |
+| ![Aviator Sensors magnetic compass](images/Screenshot_20260815_171937_sensors.png) | ![Aviator Sensors raw ambient-pressure display](images/Screenshot_20260815_172123_sensors.png) |
 
 ## Requirements
 
@@ -65,8 +92,8 @@ code:
 scripts/build-play-release.sh 1.0.0 1
 ```
 
-Create two Play Console apps, one for `com.jglenn.aviator.watchface` and one for
-`com.jglenn.aviator.sensors`, and upload the corresponding AAB to an internal-test
+Create two Play Console apps, one for `com.jglenn9k.aviator.watchface` and one for
+`com.jglenn9k.aviator.sensors`, and upload the corresponding AAB to an internal-test
 release. Accept Play App Signing with Google's generated key for each app.
 
 No Samsung SDK partnership registration is required. Samsung Health owns the Blood
