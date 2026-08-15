@@ -4,9 +4,11 @@
     <string name="cyan_label">Cyan</string>
     <string name="green_label">Green</string>
     <string name="amber_label">Amber</string>
+    <string name="weather_unit_label">Weather unit</string>
+    <string name="fahrenheit_label">Fahrenheit (°F)</string>
+    <string name="celsius_label">Celsius (°C)</string>
     <string name="heading_slot">Magnetic heading</string>
     <string name="pressure_slot">Ambient pressure</string>
     <string name="spo2_slot">Blood oxygen</string>
     <string name="weather_slot">Weather</string>
 </resources>
-

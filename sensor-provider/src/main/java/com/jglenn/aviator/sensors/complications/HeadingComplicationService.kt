@@ -7,10 +7,15 @@ import androidx.wear.watchface.complications.datasource.SuspendingComplicationDa
 import com.jglenn.aviator.sensors.R
 import com.jglenn.aviator.sensors.data.AviationFormatter
 import com.jglenn.aviator.sensors.data.ReadingStore
+import com.jglenn.aviator.sensors.sensors.HeadingSampler
 import com.jglenn.aviator.sensors.ui.CompassActivity
 
 class HeadingComplicationService : SuspendingComplicationDataSourceService() {
-    override suspend fun onComplicationRequest(request: ComplicationRequest): ComplicationData? = data(false)
+    override suspend fun onComplicationRequest(request: ComplicationRequest): ComplicationData? {
+        val store = ReadingStore(this)
+        HeadingSampler(this).sample()?.let(store::saveHeading)
+        return data(false)
+    }
     override fun getPreviewData(type: ComplicationType): ComplicationData = data(true)
 
     private fun data(preview: Boolean): ComplicationData {
@@ -20,4 +25,3 @@ class HeadingComplicationService : SuspendingComplicationDataSourceService() {
         return shortTextData(this, "HDG", if (stale) "$value*" else value, "Magnetic heading $value${if (stale) ", stale" else ""}", R.drawable.ic_heading, CompassActivity::class.java)
     }
 }
-

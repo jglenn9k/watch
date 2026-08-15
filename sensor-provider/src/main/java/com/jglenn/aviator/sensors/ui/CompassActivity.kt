@@ -6,6 +6,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.WindowManager
 import com.jglenn.aviator.sensors.complications.HeadingComplicationService
 import com.jglenn.aviator.sensors.complications.requestUpdate
@@ -19,6 +20,7 @@ class CompassActivity : Activity(), SensorEventListener {
     private var rotationSensor: Sensor? = null
     private var heading = 0f
     private var accuracy = SensorManager.SENSOR_STATUS_UNRELIABLE
+    private var lastPublishedAt = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +55,15 @@ class CompassActivity : Activity(), SensorEventListener {
         heading = circularSmooth(heading, raw, 0.22f)
         accuracy = event.accuracy
         compassView.update(heading, accuracy)
+
+        // Keep the complication in step with the guided compass without flooding
+        // Wear OS with an update for every sensor event.
+        val now = SystemClock.elapsedRealtime()
+        if (now - lastPublishedAt >= 1_000L) {
+            ReadingStore(this).saveHeading(heading)
+            requestUpdate(this, HeadingComplicationService::class.java)
+            lastPublishedAt = now
+        }
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, value: Int) {
