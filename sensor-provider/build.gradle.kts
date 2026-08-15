@@ -17,11 +17,6 @@ android {
 
     buildFeatures { buildConfig = true }
     testOptions { unitTests.isIncludeAndroidResources = true }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
     signingConfigs {
         val keystorePath = providers.environmentVariable("ANDROID_KEYSTORE_PATH").orNull
         if (keystorePath != null) {
