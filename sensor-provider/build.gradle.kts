@@ -15,18 +15,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    flavorDimensions += "spo2"
-    productFlavors {
-        create("demo") {
-            dimension = "spo2"
-            isDefault = true
-            versionNameSuffix = "-demo"
-        }
-        create("samsung") {
-            dimension = "spo2"
-        }
-    }
-
     buildFeatures { buildConfig = true }
     testOptions { unitTests.isIncludeAndroidResources = true }
     compileOptions {
@@ -59,9 +47,6 @@ dependencies {
     implementation("androidx.wear:wear:1.3.0")
     implementation("androidx.wear.watchface:watchface-complications-data-source-ktx:1.2.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
-
-    "samsungImplementation"(files("libs/samsung-health-sensor-api.aar"))
-
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
 }

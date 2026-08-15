@@ -2,7 +2,5 @@
     <string name="app_name">Aviator Sensors</string>
     <string name="heading_provider">Aviator magnetic heading</string>
     <string name="pressure_provider">Aviator ambient pressure</string>
-    <string name="spo2_provider">Aviator blood oxygen</string>
     <string name="fitness_disclaimer">Fitness and wellness information only. Never use this reading for diagnosis, treatment, or flight-safety decisions.</string>
 </resources>
-

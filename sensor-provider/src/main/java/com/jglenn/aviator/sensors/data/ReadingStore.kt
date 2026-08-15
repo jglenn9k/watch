@@ -12,19 +12,11 @@ class ReadingStore(context: Context) {
     fun heading(): TimedReading<Float>? = floatReading(KEY_HEADING, KEY_HEADING_TIME)
     fun pressure(): TimedReading<Float>? = floatReading(KEY_PRESSURE, KEY_PRESSURE_TIME)
 
-    fun spo2(): TimedReading<Int>? {
-        if (!preferences.contains(KEY_SPO2)) return null
-        return TimedReading(preferences.getInt(KEY_SPO2, 0), preferences.getLong(KEY_SPO2_TIME, 0))
-    }
-
     fun saveHeading(degrees: Float, nowMillis: Long = System.currentTimeMillis()) =
         preferences.edit().putFloat(KEY_HEADING, degrees).putLong(KEY_HEADING_TIME, nowMillis).apply()
 
     fun savePressure(hPa: Float, nowMillis: Long = System.currentTimeMillis()) =
         preferences.edit().putFloat(KEY_PRESSURE, hPa).putLong(KEY_PRESSURE_TIME, nowMillis).apply()
-
-    fun saveSpo2(percent: Int, nowMillis: Long = System.currentTimeMillis()) =
-        preferences.edit().putInt(KEY_SPO2, percent).putLong(KEY_SPO2_TIME, nowMillis).apply()
 
     private fun floatReading(valueKey: String, timeKey: String): TimedReading<Float>? {
         if (!preferences.contains(valueKey)) return null
@@ -36,8 +28,5 @@ class ReadingStore(context: Context) {
         const val KEY_HEADING_TIME = "heading_time"
         const val KEY_PRESSURE = "pressure"
         const val KEY_PRESSURE_TIME = "pressure_time"
-        const val KEY_SPO2 = "spo2"
-        const val KEY_SPO2_TIME = "spo2_time"
     }
 }
-

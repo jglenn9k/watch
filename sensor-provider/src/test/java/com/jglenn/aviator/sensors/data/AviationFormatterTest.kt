@@ -20,9 +20,4 @@ class AviationFormatterTest {
     @Test fun convertsStandardPressureToInchesOfMercury() {
         assertEquals("29.92 inHg", AviationFormatter.pressure(1013.25f))
     }
-
-    @Test fun formatsSpo2Percent() {
-        assertEquals("98%", AviationFormatter.spo2(98))
-    }
 }
-

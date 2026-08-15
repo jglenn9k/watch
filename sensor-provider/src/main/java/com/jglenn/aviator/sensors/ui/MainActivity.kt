@@ -37,8 +37,7 @@ class MainActivity : Activity() {
             addView(label("Raw ambient pressure — not QNH or an altimeter setting", 14f, Color.LTGRAY))
             addView(button("REFRESH BARO") { refreshPressure() })
             addView(button("LIVE COMPASS") { startActivity(Intent(this@MainActivity, CompassActivity::class.java)) })
-            addView(button("MEASURE SpO₂") { startActivity(Intent(this@MainActivity, Spo2Activity::class.java)) })
-            addView(label("Assign Samsung/Google Weather to the WX slot in the watch-face editor.", 14f, Color.LTGRAY))
+            addView(label("Assign Samsung Health Blood oxygen to SpO₂ and Samsung/Google Weather to WX in the watch-face editor.", 14f, Color.LTGRAY))
         }
         setContentView(ScrollView(this).apply { addView(content) })
         showCachedPressure()
@@ -82,4 +81,3 @@ class MainActivity : Activity() {
         super.onDestroy()
     }
 }
-

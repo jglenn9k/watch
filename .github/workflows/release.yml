@@ -17,7 +17,6 @@ jobs:
       ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
       ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
       ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-      SAMSUNG_HEALTH_SENSOR_AAR_BASE64: ${{ secrets.SAMSUNG_HEALTH_SENSOR_AAR_BASE64 }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -39,29 +38,15 @@ jobs:
           test -n "$ANDROID_KEY_PASSWORD"
           printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.keystore"
           echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/release.keystore" >> "$GITHUB_ENV"
-      - name: Select provider flavor
-        run: |
-          if [ -n "$SAMSUNG_HEALTH_SENSOR_AAR_BASE64" ]; then
-            printf '%s' "$SAMSUNG_HEALTH_SENSOR_AAR_BASE64" | base64 --decode > sensor-provider/libs/samsung-health-sensor-api.aar
-            echo "PROVIDER_VARIANT=samsung" >> "$GITHUB_ENV"
-          else
-            echo "PROVIDER_VARIANT=demo" >> "$GITHUB_ENV"
-          fi
       - name: Strip tag prefix
         run: echo "RELEASE_VERSION_NAME=${RELEASE_VERSION_NAME#v}" >> "$GITHUB_ENV"
       - name: Unit tests
-        run: ./gradlew --no-daemon :sensor-provider:testDemoDebugUnitTest
+        run: ./gradlew --no-daemon :sensor-provider:testDebugUnitTest
       - name: Build signed APKs and bundles
-        run: |
-          if [ "$PROVIDER_VARIANT" = samsung ]; then
-            ./gradlew --no-daemon :watchface:assembleRelease :watchface:bundleRelease :sensor-provider:assembleSamsungRelease :sensor-provider:bundleSamsungRelease
-          else
-            ./gradlew --no-daemon :watchface:assembleRelease :watchface:bundleRelease :sensor-provider:assembleDemoRelease :sensor-provider:bundleDemoRelease
-          fi
+        run: ./gradlew --no-daemon :watchface:assembleRelease :watchface:bundleRelease :sensor-provider:assembleRelease :sensor-provider:bundleRelease
       - name: Package release
         run: |
-          scripts/package-release.sh "$PROVIDER_VARIANT" release
-          echo "$PROVIDER_VARIANT" > release/PROVIDER_VARIANT
+          scripts/package-release.sh release
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
@@ -76,4 +61,4 @@ jobs:
           body: |
             Wear OS watch face and sensor provider.
 
-            Verify downloads using `SHA256SUMS`. `PROVIDER_VARIANT` records whether this release contains the Samsung or demo SpO₂ implementation.
+            Verify downloads using `SHA256SUMS`. Assign Samsung Health's Blood oxygen complication to the SpO₂ slot.

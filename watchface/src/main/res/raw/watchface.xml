@@ -94,7 +94,7 @@
 
         <ComplicationSlot x="55" y="351" width="170" height="77" slotId="102" displayName="spo2_slot" supportedTypes="SHORT_TEXT EMPTY">
             <BoundingRoundBox x="0" y="0" width="170" height="77" cornerRadius="16" outlinePadding="2" />
-            <DefaultProviderPolicy primaryProvider="com.jglenn.aviator.sensors/com.jglenn.aviator.sensors.complications.Spo2ComplicationService" primaryProviderType="SHORT_TEXT" defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
+            <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" />
             <Complication type="SHORT_TEXT"><PartText x="10" y="5" width="150" height="67" tintColor="[CONFIGURATION.accent.1]"><Text ellipsis="TRUE"><Font family="SYNC_TO_DEVICE" size="24" weight="BOLD"><Template><![CDATA[%s
 %s]]><Parameter expression="[COMPLICATION.TITLE]" /><Parameter expression="[COMPLICATION.TEXT]" /></Template></Font></Text></PartText></Complication>
             <Complication type="EMPTY"><PartText x="10" y="5" width="150" height="67" tintColor="#FFFFAB00"><Text><Font family="SYNC_TO_DEVICE" size="23" weight="BOLD"><![CDATA[SpO₂

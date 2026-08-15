@@ -12,7 +12,6 @@ version_code="$2"
 config_root="${XDG_CONFIG_HOME:-$HOME/.config}/aviator-watch"
 keystore_path="${ANDROID_KEYSTORE_PATH:-$config_root/aviator-upload.jks}"
 key_alias="${ANDROID_KEY_ALIAS:-aviator-upload}"
-aar_path="sensor-provider/libs/samsung-health-sensor-api.aar"
 release_dir="release/play-$version_name"
 
 [[ "$version_name" =~ ^[0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z.-]+)?$ ]] || {
@@ -28,16 +27,6 @@ release_dir="release/play-$version_name"
   echo "Run scripts/setup-play-signing.sh first." >&2
   exit 1
 }
-[[ -f "$aar_path" ]] || {
-  echo "Samsung SDK AAR not found: $aar_path" >&2
-  echo "Download Samsung Health Sensor SDK v1.4.1 and copy its AAR to that path." >&2
-  exit 1
-}
-unzip -tq "$aar_path" >/dev/null || {
-  echo "Samsung SDK file is not a valid AAR: $aar_path" >&2
-  exit 1
-}
-
 if [[ -z "${ANDROID_KEYSTORE_PASSWORD:-}" ]]; then
   read -rsp "Upload keystore password: " ANDROID_KEYSTORE_PASSWORD
   echo
@@ -55,16 +44,16 @@ export RELEASE_VERSION_NAME="$version_name"
 export RELEASE_VERSION_CODE="$version_code"
 
 ./gradlew --no-daemon --console=plain \
-  :sensor-provider:testDemoDebugUnitTest \
+  :sensor-provider:testDebugUnitTest \
   :watchface:assembleRelease \
   :watchface:bundleRelease \
-  :sensor-provider:assembleSamsungRelease \
-  :sensor-provider:bundleSamsungRelease
+  :sensor-provider:assembleRelease \
+  :sensor-provider:bundleRelease
 
-scripts/package-release.sh samsung "$release_dir"
+scripts/package-release.sh "$release_dir"
 
 echo
 echo "Play bundles:"
 echo "  $release_dir/aviator-watchface.aab"
-echo "  $release_dir/aviator-sensors-samsung.aab"
+echo "  $release_dir/aviator-sensors.aab"
 echo "GitHub/sideload APKs are in the same directory."

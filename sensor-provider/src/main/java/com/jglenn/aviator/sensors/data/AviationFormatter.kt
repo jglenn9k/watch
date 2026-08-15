@@ -20,7 +20,4 @@ object AviationFormatter {
     )
 
     fun pressure(hPa: Float): String = "%.2f inHg".format(Locale.US, hPa * HPA_TO_INHG)
-
-    fun spo2(percent: Int): String = "$percent%"
 }
-
