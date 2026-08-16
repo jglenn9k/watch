@@ -13,6 +13,17 @@ A high-contrast Wear OS watch face for general-aviation pilots. Local time is
 primary, UTC is always shown in 24-hour format, and the four lower panels show
 magnetic heading, raw ambient pressure, blood oxygen, and weather.
 
+## Google Play
+
+Both Wear OS packages have been submitted to Google Play and are pending their
+initial review. These permanent listing links will become public after approval:
+
+- [Aviator Digital watch face](https://play.google.com/store/apps/details?id=com.jglenn9k.aviator.watchface)
+- [Aviator Sensors Companion](https://play.google.com/store/apps/details?id=com.jglenn9k.aviator.sensors)
+
+Install both packages for the complete experience. The watch face works without
+the companion, but its heading and pressure panels require Aviator Sensors.
+
 > This project is not certified flight equipment. Pressure is the watch sensor's
 > local ambient pressure—not QNH or an airport altimeter setting. SpO2 is fitness
 > and wellness information only and must not be used for diagnosis, treatment, or
