@@ -15,8 +15,7 @@ magnetic heading, raw ambient pressure, blood oxygen, and weather.
 
 ## Google Play
 
-Both Wear OS packages have been submitted to Google Play and are pending their
-initial review. These permanent listing links will become public after approval:
+Both Wear OS packages are available from Google Play:
 
 - [Aviator Digital watch face](https://play.google.com/store/apps/details?id=com.jglenn9k.aviator.watchface)
 - [Aviator Sensors Companion](https://play.google.com/store/apps/details?id=com.jglenn9k.aviator.sensors)
