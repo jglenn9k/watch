@@ -48,6 +48,10 @@ feature used here is available in that schema and it preserves compatibility wit
 the Watch5 Pro. This is the current declarative WFF packaging model, without
 unnecessarily requiring Wear OS 6.
 
+Every watch-face build runs `:watchface:verifyWatch5ProCompatibility`. The build
+fails if the package stops requiring watch hardware, enables executable code,
+changes away from WFF v1/API 33, or no longer contains a valid WFF root document.
+
 ## Screenshots
 
 ### Watch face
@@ -104,7 +108,28 @@ scripts/build-play-release.sh 1.0.0 1
 
 Create two Play Console apps, one for `com.jglenn9k.aviator.watchface` and one for
 `com.jglenn9k.aviator.sensors`, and upload the corresponding AAB to an internal-test
-release. Accept Play App Signing with Google's generated key for each app.
+release. For each app, first open **Test and release → Setup → Advanced settings →
+Form factors**, add **Wear OS**, opt in to Wear OS distribution, and accept its
+terms. When creating the release, select **Wear OS only** in the form-factor
+selector. A bundle uploaded only to a phone/default track is not installable on a
+watch even though its manifest requires watch hardware. Accept Play App Signing
+with Google's generated key for each app.
+
+After publishing the test release, open **Monitor and improve → Reach and devices
+→ Device catalog**, find `Samsung SM-R920`, and verify that the active Wear OS
+track says **Supported**. If it says **Unsupported**, expand the variant details:
+
+- An SDK-level mismatch means the watch must be updated to Wear OS 4 / API 33 or
+  newer; Watch Face Format v1 cannot be installed on an older system version.
+- **Excluded by rule** or **Manually excluded** must be removed in Device catalog.
+- A supported device that still cannot install usually means the Google account
+  has not joined the test, the test is unavailable in its country, or the release
+  has not finished review/rollout.
+
+The phone (`SM-S926U`, for example) is expected to appear as incompatible because
+these packages deliberately require `android.hardware.type.watch`. Install from
+the Play Store on the watch, or choose the watch from the web installer after the
+Wear OS release becomes available.
 
 No Samsung SDK partnership registration is required. Samsung Health owns the Blood
 oxygen complication and its permissions; this project only displays the data the

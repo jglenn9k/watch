@@ -1,6 +1,7 @@
 package com.jglenn9k.aviator.sensors.ui
 
 import android.app.Activity
+import android.content.res.ColorStateList
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -72,6 +73,8 @@ class MainActivity : Activity() {
 
     private fun button(value: String, action: () -> Unit) = Button(this).apply {
         text = value
+        setTextColor(Color.BLACK)
+        backgroundTintList = ColorStateList.valueOf(Color.rgb(0, 229, 255))
         setOnClickListener { action() }
         layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply { setMargins(0, 6, 0, 6) }
     }

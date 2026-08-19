@@ -44,6 +44,7 @@ export RELEASE_VERSION_NAME="$version_name"
 export RELEASE_VERSION_CODE="$version_code"
 
 ./gradlew --no-daemon --console=plain \
+  :watchface:verifyWatch5ProCompatibility \
   :sensor-provider:testDebugUnitTest \
   :watchface:assembleRelease \
   :watchface:bundleRelease \
@@ -57,3 +58,10 @@ echo "Play bundles:"
 echo "  $release_dir/aviator-watchface.aab"
 echo "  $release_dir/aviator-sensors.aab"
 echo "GitHub/sideload APKs are in the same directory."
+echo
+echo "Google Play deployment (required for watch eligibility):"
+echo "  1. In each app, enable Wear OS under Advanced settings > Form factors."
+echo "  2. Opt in to Wear OS distribution and accept its terms."
+echo "  3. Select 'Wear OS only' in the release form-factor selector."
+echo "  4. Upload the matching AAB to a Wear OS test or production track."
+echo "  5. Confirm SM-R920 is Supported in Reach and devices > Device catalog."
